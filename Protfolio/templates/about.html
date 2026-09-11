@@ -1,0 +1,57 @@
+
+{% extends "base.html" %}
+
+{% block title %}About{% endblock %}
+
+{% block content %}
+
+<div id="about" class="about">
+
+    <div class="about-container">
+
+        <!-- Text on the left -->
+        <div class="about-text">
+
+            <h1>About Me</h1>
+
+            <p>
+                I'm Ahsan Sultan, a computer science student interested in
+                the intersection of chemistry, computer science, and data
+                science.
+            </p>
+
+            <p>
+                I'm trying to bridge the gaps in my chemistry knowledge
+                through programming, data analysis, and computational
+                thinking. I want to understand how computer science can be
+                used as a tool for exploring chemistry.
+            </p>
+
+            <p>
+                I'm currently building my foundation in programming, data
+                science, and scientific computing while continuing to
+                strengthen my chemistry knowledge.
+            </p>
+
+            <p>
+                My goal is to bring these fields together and eventually
+                work on problems where chemistry, data, and computation
+                meet.
+            </p>
+
+        </div>
+
+        <!-- Image on the right -->
+        <div class="about-image">
+
+            <img src="{{ url_for('static', filename='images/cschem.jpeg') }}"
+                 alt="Ahsan Sultan">
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+

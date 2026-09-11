@@ -1,0 +1,78 @@
+
+{% extends "base.html" %}
+
+{% block title %}Community{% endblock %}
+
+{% block content %}
+<div class="community-page">
+
+    <!-- Hero Section -->
+    <section class="community-hero">
+        <div class="community-hero-content">
+            <span class="community-badge">Our Community</span>
+
+            <h1>Connect, Share &amp; Grow Together</h1>
+
+            <p>
+                A new community space is coming where you can read and write posts,
+                share your thoughts with others, ask questions, and connect with
+                people who share your interests.
+            </p>
+
+            <a href="#community-posts" class="community-btn">
+                Explore Community
+            </a>
+        </div>
+    </section>
+
+    <!-- Community Features -->
+    <section class="community-features">
+        <div class="community-feature-card">
+            <div class="feature-icon">✍️</div>
+            <h3>Write Posts</h3>
+            <p>
+                Share your ideas, experiences, questions, and thoughts with the
+                community.
+            </p>
+        </div>
+
+        <div class="community-feature-card">
+            <div class="feature-icon">💬</div>
+            <h3>Join Conversations</h3>
+            <p>
+                Read what others are saying and take part in meaningful discussions.
+            </p>
+        </div>
+
+        <div class="community-feature-card">
+            <div class="feature-icon">🌱</div>
+            <h3>Grow Together</h3>
+            <p>
+                Learn from others, exchange knowledge, and build connections.
+            </p>
+        </div>
+    </section>
+
+    <!-- Coming Soon -->
+    <section class="community-coming-soon" id="community-posts">
+        <div class="coming-soon-icon">🚀</div>
+
+        <span class="coming-soon-label">Coming Soon</span>
+
+        <h2>The Community Is Coming</h2>
+
+        <p>
+            We're building a place where everyone can have a voice.
+            Soon you'll be able to create posts, share your thoughts,
+            interact with others, and become part of our growing community.
+        </p>
+
+        <div class="community-actions">
+            <a href="#" class="community-btn">Stay Tuned</a>
+            <a href="/" class="community-btn secondary">Back to Home</a>
+        </div>
+    </section>
+
+</div>
+{% endblock %}
+

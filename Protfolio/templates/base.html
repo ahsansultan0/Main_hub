@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Our CSS -->
+
+
+<title>{% block title %}Ahsan Sultan{% endblock %}</title>
+
+<!-- Favicon -->
+<link
+    rel="icon"
+    href="{{ url_for('static', filename='images/logo.jpeg') }}"
+>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+
+</head>
+
+<body>
+
+
+
+
+<nav class="navbar">
+
+    <!-- Logo -->
+    <a href="/" class="nav-logo">
+        <img
+            src="{{ url_for('static', filename='images/logo.jpeg') }}"
+            alt="Logo"
+            class="logo-img"
+        >
+    </a>
+
+    <!-- Hamburger Button -->
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Navigation Links -->
+    <div class="nav-links" id="navLinks">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/about" class="nav-link">About</a>
+        <a href="/projects" class="nav-link">Projects</a>
+
+        <a
+            href="/community"
+            class="nav-link"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            community
+        </a>
+    </div>
+
+</nav>
+
+
+
+<!-- Main content -->
+
+<main>
+
+    {% block content %}
+    {% endblock %}
+
+</main>
+
+
+<!-- Footer -->
+
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <p id="foot">
+            © 2026 Ahsan Sultan
+        </p>
+
+    </div>
+
+</footer>
+
+</body>
+
+</html>

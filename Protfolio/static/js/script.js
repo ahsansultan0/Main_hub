@@ -123,7 +123,11 @@ const quotes = [
     {
         text: "Technology is a word that describes something that doesn't work yet.",
         author: "Douglas Adams"
-    }
+    },
+    
+        
+
+    
 ];
 
 const quoteElement = document.getElementById("quote");

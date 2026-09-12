@@ -5,28 +5,46 @@
 {% block content %}
    <section class="projects">
     <h2>Featured Projects</h2>
-    <h3 class="section-text">
-A few ideas I’m currently learning, building, and experimenting with at the intersection of chemistry and computer science. I’m exploring this space and slowly building tools to help connect the two. Still learning, experimenting, and figuring things out — please bear with me. More coming soon!
+  <div class="section-text">
+    <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR92fwFxw63EYE6OsIjY-efLBWstnrxk5Q-dTwhbtsa7A&s=10"
+        class="bimg"
+    >
 
-    </h3>
+    <div class="text-overlay">
+        A few ideas I’m currently learning, building, and experimenting with
+        chemistry and computer science.
+    </div>
+</div>
 
     <div class="project-grid">
-<!--
         <article class="project-card">
-            <img src="{{ url_for('static', filename='images/project1.jpg') }}"
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTORCuMQG2jfd64J1MT0SXjkxwWgsKv8jLsW8h2ioiFAQ&s=10"
                  alt="Project 1">
 
             <div class="project-content">
                 <span class="project-type">Web App</span>
-                <h3>Project Name</h3>
+                <h3>A basic Compound visulizer</h3>
                 <p>
-                    A short description of what this project does.
+                    A Basic 2d and 3d visulizer for compounds.
                 </p>
-                <a href="/projects/project1">View Project →</a>
+                <a href="#">View Project →</a>
             </div>
         </article>
 
-      --!>
+     <article class="project-card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScSAsUHyzlGLJz9vmIf0O7qjFAhPIhiTQCtGCRepJzig&s=10"
+                 alt="Project 1">
+
+            <div class="project-content">
+                <span class="project-type">Web App</span>
+                <h3>A basic Compound Porperty predictor</h3>
+                <p>
+                    A Basic ML property predictor for compounds.
+                </p>
+                <a href="#">View Project →</a>
+            </div>
+        </article>
 
     </div>
 </section>

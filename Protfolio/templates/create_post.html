@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}Create Post{% endblock %}
+
+{% block content %}
+
+<div class="post-page">
+
+    <div class="post-form-container">
+
+        <div class="post-form-header">
+            <span class="post-form-icon">🧪</span>
+            <div>
+                <h1>Create a Post</h1>
+                <p>Share something with the Chem Society.</p>
+            </div>
+        </div>
+
+        <form method="POST" action="/post" class="post-form">
+
+            <div class="form-group">
+                
+                <label for="title">Post Title</label>
+
+                <input
+                    type="text"
+                    id="title"
+                    name="title"
+                    placeholder="Enter your post title..."
+                    required
+                >
+            </div>
+
+
+            <div class="form-group">
+                <label for="content">Post</label>
+
+                <textarea
+                    id="content"
+                    name="content"
+                    rows="10"
+                    placeholder="Write your thoughts, question, discovery or idea..."
+                    required
+                ></textarea>
+            </div>
+<div>{{message}}</div>
+
+            <div class="community-actions">
+
+                <a href="/community" class="community-btn secondary">
+                    ← Cancel
+                </a>
+
+                <button type="submit" class="community-btn">
+                    🧪 Post
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,170 @@
+{% extends "base.html" %} 
+ 
+{% block content %} 
+ 
+<style> 
+    .register-container { 
+        min-height: 75vh; 
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+        padding: 40px 20px; 
+    } 
+ 
+    .register-card { 
+        width: 100%; 
+        max-width: 420px; 
+        padding: 35px; 
+        background: #fff; 
+        border-radius: 14px; 
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); 
+        animation: slideUp 0.5s ease; 
+    } 
+ 
+    .register-card h1 { 
+        margin-bottom: 8px; 
+        text-align: center; 
+    } 
+ 
+    .register-card p { 
+        margin-bottom: 25px; 
+        text-align: center; 
+        color: #777; 
+    } 
+ 
+    .form-group { 
+        margin-bottom: 18px; 
+    } 
+ 
+    .form-group label { 
+        display: block; 
+        margin-bottom: 7px; 
+        font-weight: 600; 
+    } 
+ 
+    .form-group input { 
+        width: 100%; 
+        padding: 12px 14px; 
+        border: 1px solid #ddd; 
+        border-radius: 8px; 
+        font-size: 15px; 
+        box-sizing: border-box; 
+        transition: 0.2s ease; 
+    } 
+ 
+    .form-group input:focus { 
+        outline: none; 
+        border-color: #2563eb; 
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12); 
+    } 
+ 
+    .register-btn { 
+        width: 100%; 
+        padding: 13px; 
+        border: none; 
+        border-radius: 8px; 
+        background: #2563eb; 
+        color: white; 
+        font-size: 16px; 
+        font-weight: 600; 
+        cursor: pointer; 
+        transition: 0.2s ease; 
+    } 
+ 
+    .register-btn:hover { 
+        background: #1d4ed8; 
+        transform: translateY(-2px); 
+        box-shadow: 0 6px 15px rgba(37, 99, 235, 0.25); 
+    } 
+ 
+    .register-btn:active { 
+        transform: translateY(0); 
+    } 
+ 
+    .login-link { 
+        margin-top: 18px; 
+        text-align: center; 
+        color: #777; 
+    } 
+ 
+    .login-link a { 
+        color: #2563eb; 
+        text-decoration: none; 
+        font-weight: 600; 
+    } 
+ 
+    .login-link a:hover { 
+        text-decoration: underline; 
+    } 
+ 
+    @keyframes slideUp { 
+        from { 
+            opacity: 0; 
+            transform: translateY(20px); 
+        } 
+ 
+        to { 
+            opacity: 1; 
+            transform: translateY(0); 
+        } 
+    } 
+</style> 
+ 
+<div class="register-container"> 
+    <div class="register-card"> 
+ 
+        <h1>Create Account</h1> 
+        <p>Register a new account</p> 
+ 
+        <form method="POST" action="/register"> 
+ 
+            <div class="form-group"> 
+                <label for="username">Username</label> 
+                <input 
+                    type="text" 
+                    id="username" 
+                    name="username" 
+                    placeholder="Enter your username" 
+                    required 
+                > 
+            </div> 
+ 
+            <div class="form-group"> 
+                <label for="user_id">User Email</label> 
+                <input 
+                    type="email" 
+                    id="user_id" 
+                    name="email" 
+                    placeholder="example@email.com" 
+                    required 
+                > 
+            </div> 
+ 
+            <div class="form-group"> 
+                <label for="password">Password</label> 
+                <input 
+                    type="password" 
+                    id="password" 
+                    name="password" 
+                    placeholder="Enter your password" 
+                    required 
+                > 
+            </div> 
+ {% if message %}
+<h4 style="background-color:white;color:red;border:2px solid red">❌ {{message}}</h4>
+{%endif%}
+<br/>
+            <button type="submit" class="register-btn"> 
+                Register 
+            </button> 
+ 
+        </form> 
+ 
+        <div class="login-link"> 
+            Already registered? <a href="/login">Sign in</a> 
+        </div> 
+ 
+    </div> 
+</div> 
+ 
+{% endblock %}

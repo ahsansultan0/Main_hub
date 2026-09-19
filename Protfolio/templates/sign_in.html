@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+    .login-container {
+        min-height: 75vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px 20px;
+    }
+
+    .login-card {
+        width: 100%;
+        max-width: 420px;
+        padding: 35px;
+        background: #fff;
+        border-radius: 14px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        animation: slideUp 0.5s ease;
+    }
+
+    .login-card h1 {
+        margin-bottom: 8px;
+        text-align: center;
+    }
+
+    .login-card p {
+        margin-bottom: 25px;
+        text-align: center;
+        color: #777;
+    }
+
+    .form-group {
+        margin-bottom: 18px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 7px;
+        font-weight: 600;
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 12px 14px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 15px;
+        box-sizing: border-box;
+        transition: 0.2s ease;
+    }
+
+    .form-group input:focus {
+        outline: none;
+        border-color: #2563eb;
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+    }
+
+    .login-btn {
+        width: 100%;
+        padding: 13px;
+        border: none;
+        border-radius: 8px;
+        background: #2563eb;
+        color: white;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.2s ease;
+    }
+
+    .login-btn:hover {
+        background: #1d4ed8;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(37, 99, 235, 0.25);
+    }
+
+    .login-btn:active {
+        transform: translateY(0);
+    }
+
+    .register-link {
+        margin-top: 18px;
+        text-align: center;
+        color: #777;
+    }
+
+    .register-link a {
+        color: #2563eb;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    .register-link a:hover {
+        text-decoration: underline;
+    }
+
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<div class="login-container">
+    <div class="login-card">
+
+        <h1>Welcome Back</h1>
+        <p>Sign in to your account</p>
+
+        <form method="POST" action="/login">
+
+            <div class="form-group">
+                <label for="user_id">User Email</label>
+                <input
+                    type="email"
+                    id="user_id"
+                    name="user_id"
+                    placeholder="example@email.com"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    required
+                >
+            </div>
+
+            <button type="submit" class="login-btn">
+                Sign In
+            </button>
+
+        </form>
+
+        <div class="register-link">
+            Don't have an account?
+            <a href="/register">Create one</a>
+        </div>
+        {% if message %}
+<h4 style="background-color:white;color:red;border:2px solid red">❌ {{message}}</h4>
+{%endif%}
+    </div>
+    
+</div>
+
+{% endblock %}

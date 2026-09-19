@@ -1,7 +1,7 @@
 import sqlalchemy as db
 
+engine=db.create_engine('sqlite:///posts.db')
 
-engine=db.create_engine('sqlite:///students.db')
 print('Engine created')
 
 
@@ -13,8 +13,11 @@ posts=db.Table(
     meta_obj,
     db.Column('id', db.Integer, primary_key=True),
     db.Column("title",db.String,nullable=False),
-    db.Column('content',db.String,nullable=False)
+    db.Column('content',db.String,nullable=False),
+    db.Column("user_id", db.String(255), nullable=False)
 )
+
+connection =engine.connect()
 meta_obj.create_all(engine)
 
 

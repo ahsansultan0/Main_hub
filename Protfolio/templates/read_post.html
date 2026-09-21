@@ -34,6 +34,37 @@
 
         <!-- Bottom Actions -->
         <div class="community-actions read-post-actions">
+           
+{% if allowed %}
+
+
+     
+    <form method="POST"
+      action="{{ url_for('crud.delete_post', post_id=post.id) }}">
+
+    <button   style="
+           display: inline-block;
+           padding: 8px 14px;
+           background-color: #dc3545;
+           color: white;
+           text-decoration: none;
+           text-align:center;
+           border-radius: 5px;
+           margin-right: 6px;"
+           
+           type="submit">Delete</button>
+
+</form>
+
+    
+
+{% endif %}
+
+
+
+
+
+
 
             <a href="/community" class="community-btn secondary">
                 ← Back to Community

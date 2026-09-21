@@ -1,3 +1,4 @@
+
 {% extends "base.html" %}
 
 {% block title %}
@@ -6,10 +7,462 @@ Dashboard
 
 {% block content %}
 
-<h1>Welcome to your dashboard</h1>
+<script>
+    const quotes = [
+        {
+            text: "Programs must be written for people to read, and only incidentally for machines to execute.",
+            author: "Harold Abelson"
+        },
+        {
+            text: "The computer was born to solve problems that did not exist before.",
+            author: "Bill Gates"
+        },
+        {
+            text: "Any sufficiently advanced technology is indistinguishable from magic.",
+            author: "Arthur C. Clarke"
+        },
+        {
+            text: "The best way to predict the future is to invent it.",
+            author: "Alan Kay"
+        },
+        {
+            text: "First, solve the problem. Then, write the code.",
+            author: "John Johnson"
+        },
+        {
+            text: "Talk is cheap. Show me the code.",
+            author: "Linus Torvalds"
+        },
+        {
+            text: "The most disastrous thing that you can ever learn is your first programming language.",
+            author: "Alan Perlis"
+        },
+        {
+            text: "Science is the belief in the ignorance of experts.",
+            author: "Richard Feynman"
+        },
+        {
+            text: "What I cannot create, I do not understand.",
+            author: "Richard Feynman"
+        },
+        {
+            text: "The important thing is to never stop questioning.",
+            author: "Albert Einstein"
+        },
+        {
+            text: "Nothing in life is to be feared, it is only to be understood.",
+            author: "Marie Curie"
+        },
+        {
+            text: "Chemistry is necessarily experimental science.",
+            author: "Michael Faraday"
+        },
+        {
+            text: "The study of chemistry is the study of change.",
+            author: "Unknown"
+        },
+        {
+            text: "Chemistry is the central science.",
+            author: "Theodore L. Brown"
+        },
+        {
+            text: "Research is what I'm doing when I don't know what I'm doing.",
+            author: "Wernher von Braun"
+        },
+        {
+            text: "The important thing in science is not so much to obtain new facts as to discover new ways of thinking about them.",
+            author: "William Lawrence Bragg"
+        },
+        {
+            text: "Somewhere, something incredible is waiting to be known.",
+            author: "Carl Sagan"
+        },
+        {
+            text: "Equipped with his five senses, man explores the universe around him and calls the adventure Science.",
+            author: "Edwin Hubble"
+        },
+        {
+            text: "The art of programming is the art of organizing complexity.",
+            author: "Edsger W. Dijkstra"
+        },
+        {
+            text: "Computer science is no more about computers than astronomy is about telescopes.",
+            author: "Michael R. Fellows"
+        }
+    ];
 
-<p>You are logged in.</p>
+    let currentQuote = 1;
 
-<a href="{{ url_for('auth.login') }}">Logout</a>
+    function changeQuote() {
+        let newQuote;
+
+        do {
+            newQuote = Math.floor(Math.random() * quotes.length);
+        } while (newQuote === currentQuote);
+
+        currentQuote = newQuote;
+
+        document.getElementById("quoteText").textContent =
+            `"${quotes[currentQuote].text}"`;
+
+        document.getElementById("quoteAuthor").textContent =
+            "— " + quotes[currentQuote].author;
+    }
+
+    // Show a quote immediately
+    changeQuote();
+
+    // Automatically change every 15 seconds
+    setInterval(changeQuote, 15000);
+</script>
+
+
+<style>
+    .dashboard {
+        max-width: 950px;
+        margin: 45px auto;
+        padding: 20px;
+        font-family: Arial, sans-serif;
+    }
+
+    /* Quote */
+
+    .quote-box {
+        text-align: center;
+        padding: 30px 25px;
+        margin-bottom: 30px;
+        background: linear-gradient(135deg, #f4f8ff, #eefaf7);
+        border: 1px solid #dce5ef;
+        border-radius: 18px;
+        box-shadow: 0 7px 22px rgba(0, 0, 0, 0.05);
+    }
+
+    .quote-icon {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+    }
+
+    #quoteText {
+        margin: 0 auto 12px;
+        max-width: 750px;
+        font-size: 1.2rem;
+        line-height: 1.6;
+        color: #263247;
+        font-style: italic;
+    }
+
+    #quoteAuthor {
+        color: #667085;
+        font-size: 0.95rem;
+    }
+
+    .quote-button {
+        margin-top: 18px;
+        padding: 8px 15px;
+        border: none;
+        border-radius: 8px;
+        background: #263247;
+        color: white;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .quote-button:hover {
+        background: #111827;
+        transform: translateY(-1px);
+    }
+
+
+    /* Welcome */
+
+    .hero {
+        margin-bottom: 25px;
+    }
+
+    .hero h1 {
+        margin-bottom: 8px;
+        color: #172033;
+        font-size: 2rem;
+    }
+
+    .hero p {
+        color: #626b7c;
+        font-size: 1.05rem;
+    }
+
+    .status {
+        display: inline-block;
+        margin-top: 5px;
+        padding: 6px 12px;
+        border-radius: 20px;
+        background: #e5f8ed;
+        color: #18794e;
+        font-size: 0.85rem;
+        font-weight: bold;
+    }
+
+
+    /* Cards */
+
+    .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 18px;
+    }
+
+    .card {
+        background: white;
+        border: 1px solid #e3e7ee;
+        border-radius: 14px;
+        padding: 23px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    }
+
+    .card h2 {
+        margin-top: 0;
+        margin-bottom: 10px;
+        color: #202938;
+        font-size: 1.2rem;
+    }
+
+    .card p {
+        margin-bottom: 8px;
+        color: #626b7c;
+        line-height: 1.6;
+    }
+
+    .development {
+        border-left: 4px solid #4f7cff;
+    }
+
+    .development strong {
+        color: #344054;
+    }
+
+
+    /* Contact */
+
+    .contact {
+        margin-top: 22px;
+        padding: 24px;
+        text-align: center;
+        background: #fafafa;
+        border: 1px solid #e5e5e5;
+        border-radius: 14px;
+    }
+
+    .contact h2 {
+        margin-top: 0;
+        color: #202938;
+    }
+
+    .contact p {
+        color: #626b7c;
+    }
+
+    .contact a {
+        color: #4169e1;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .contact a:hover {
+        text-decoration: underline;
+    }
+
+
+    /* Logout */
+
+    .logout-container {
+        text-align: center;
+        margin-top: 25px;
+    }
+
+    .logout {
+        display: inline-block;
+        padding: 9px 18px;
+        border-radius: 8px;
+        background: #202938;
+        color: white;
+        text-decoration: none;
+        transition: 0.2s;
+    }
+
+    .logout:hover {
+        background: #111827;
+        transform: translateY(-1px);
+    }
+</style>
+
+
+<div class="dashboard">
+
+    <!-- Rotating Quote -->
+
+    <section class="quote-box">
+
+        <div class="quote-icon">
+            🧪 💻
+        </div>
+
+        <p id="quoteText"></p>
+
+        <div id="quoteAuthor"></div>
+
+        <button class="quote-button" onclick="changeQuote()">
+            🔄 Next Quote
+        </button>
+
+    </section>
+
+
+    <!-- Welcome -->
+
+    <section class="hero">
+
+        <h1>Welcome to your Dashboard 🧪💻</h1>
+
+        <p>
+            You are logged in and ready to explore the community.
+        </p>
+        <h3>We Working to imporve stuff we are working on following stuff</h3>
+        <span class="status">
+            ● System is active
+        </span>
+
+    </section>
+
+
+    <!-- Main Features -->
+
+    <section class="features">
+
+        <div class="card">
+
+            <h2>🧑‍🔬 Community</h2>
+
+            <p>
+                The community is already taking shape. You can
+                <strong>read posts and create basic posts</strong>
+                to share ideas, questions, projects and discoveries.
+            </p>
+
+            <p>
+                More powerful community features are currently being built.
+            </p>
+
+        </div>
+
+
+        <div class="card development">
+
+            <h2>📝 Proper Post System</h2>
+
+            <p>
+                We are working on a more complete post system where
+                you will be able to write richer posts, format your
+                content and share information more effectively.
+            </p>
+
+            <p>
+                <strong>🚧 Currently in development.</strong>
+            </p>
+
+        </div>
+
+
+        <div class="card development">
+
+            <h2>📎 Files & Images</h2>
+
+            <p>
+                File attachments and image support are being developed.
+                The goal is to let users attach useful documents,
+                images and other resources directly to their posts.
+            </p>
+
+        </div>
+
+
+        <div class="card development">
+
+            <h2>🎛️ More Controls</h2>
+
+            <p>
+                Additional user controls and dashboard features
+                will be added soon, giving users more ways to manage
+                their posts, content and community activity.
+            </p>
+
+            <p>
+                <strong>⚙️ Controls coming soon.</strong>
+            </p>
+
+        </div>
+
+
+        <div class="card development">
+
+            <h2>🛠️ Bug Fixes & Improvements</h2>
+
+            <p>
+                The platform is still under active development.
+                We are fixing bugs, improving existing features and
+                working on making everything smoother and more reliable.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>🔬 What's Coming?</h2>
+
+            <p>
+                Better posts, file sharing, image attachments,
+                additional controls, improved community features
+                and more are on the way.
+            </p>
+
+            <p>
+                This is an evolving project, and new features will
+                continue to be added over time.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- Contact -->
+
+    <section class="contact">
+
+        <h2>💡 Suggestions, Issues or Bugs?</h2>
+
+        <p>
+            Found something broken or have an idea that could improve
+            the platform?
+        </p>
+
+        <p>
+            Contact us at
+            <a href="mailto:ahsansultan012@gmail.com">
+                ahsansultan012@gmail.com
+            </a>
+        </p>
+
+    </section>
+
+
+    <div class="logout-container">
+
+        <a class="logout" href="{{ url_for('auth.logout') }}">
+            Logout
+        </a>
+
+    </div>
+
+</div>
 
 {% endblock %}

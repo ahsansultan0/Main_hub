@@ -11,9 +11,9 @@ from flask import (
 
 import sqlalchemy as db
 from dotenv import load_dotenv
-
 from database.model import engine, posts
 from routes.auth import auth
+from routes.crud import crud,get_posts
 
 
 # Load .env BEFORE reading environment variables
@@ -28,6 +28,7 @@ app.secret_key = os.getenv("SECRET_KEY", "dev-secret-key")
 
 # Register authentication routes
 app.register_blueprint(auth)
+app.register_blueprint(crud)
 
 
 # -------------------------
@@ -55,79 +56,16 @@ def projects():
 
 @app.route("/community")
 def community():
+    posts=get_posts()
 
-    connection = engine.connect()
-
-    result = connection.execute(
-        db.select(posts)
-    ).fetchall()
-
-    connection.close()
-
-    return render_template(
-        "community.html",
-        posts=result
-    )
+    return render_template("community.html",
+        posts=posts)
+    
 
 
-# -------------------------
-# Read one post
-# -------------------------
-
-@app.route("/read/<int:id>")
-def read(id):
-    if "user_id" not in session:
-        return redirect(url_for('auth.login')) 
 
 
-    connection = engine.connect()
 
-    post = connection.execute(
-        db.select(posts).where(posts.c.id == id)
-    ).fetchone()
-
-    connection.close()
-
-    return render_template(
-        "read_post.html",
-        post=post
-    )
-
-
-# -------------------------
-# Create post
-# -------------------------
-
-@app.route("/post", methods=["GET", "POST"])
-def post():
-
-    # Authentication check
-    if "user_id" not in session:
-        return redirect(url_for("auth.login"))
-
-    if request.method == "GET":
-        return render_template("create_post.html")
-
-    title = request.form["title"]
-    content = request.form["content"]
-
-    connection = engine.connect()
-
-    connection.execute(
-        db.insert(posts).values(
-            title=title,
-            content=content,
-            user_id=session['user_id']
-        )
-    )
-
-    connection.commit()
-    connection.close()
-
-    return render_template(
-        "create_post.html",
-        message="Post created successfully!"
-    )
 
 
 

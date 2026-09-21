@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div style="
+    max-width: 500px;
+    margin: 80px auto;
+    padding: 35px;
+    text-align: center;
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    border: 1px solid #eeeeee;
+">
+
+    <div style="
+        font-size: 45px;
+        margin-bottom: 15px;
+    ">
+        ✓
+    </div>
+
+    <h2 style="
+        margin: 0;
+        color: #333;
+        font-size: 24px;
+    ">
+        {{ message }}
+    </h2>
+
+</div>
+
+{% endblock %}

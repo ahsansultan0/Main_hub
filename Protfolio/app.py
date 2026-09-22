@@ -9,14 +9,13 @@ from flask import (
     session
 )
 
-import sqlalchemy as db
 from dotenv import load_dotenv
-from database.model import engine, posts
+
 from routes.auth import auth
-from routes.crud import crud,get_posts
+from routes.crud import crud, get_posts
 
 
-# Load .env BEFORE reading environment variables
+# Load .env before reading environment variables
 load_dotenv()
 
 
@@ -26,7 +25,7 @@ app = Flask(__name__)
 app.secret_key = os.getenv("SECRET_KEY", "dev-secret-key")
 
 
-# Register authentication routes
+# Register blueprints
 app.register_blueprint(auth)
 app.register_blueprint(crud)
 
@@ -56,20 +55,13 @@ def projects():
 
 @app.route("/community")
 def community():
-    posts=get_posts()
 
-    return render_template("community.html",
-        posts=posts)
-    
+    posts = get_posts()
 
-
-
-
-
-
-
-
-
+    return render_template(
+        "community.html",
+        posts=posts
+    )
 
 
 # -------------------------

@@ -1,7 +1,7 @@
 import sqlalchemy as db
 from sqlalchemy import text
 
-engine=db.create_engine('sqlite:///posts.db')
+engine=db.create_engine('sqlite:///database/posts.db')
 
 print('Engine created')
 
@@ -20,9 +20,11 @@ posts=db.Table(
 
 )
 
+from sqlalchemy import text
+
 #with engine.begin() as connection:
  #   connection.execute(
-  #      text("ALTER TABLE posts DROP COLUMN author")
+  #      text("ALTER TABLE posts ADD COLUMN user_id TEX")
    # )
 connection =engine.connect()
 meta_obj.create_all(engine)

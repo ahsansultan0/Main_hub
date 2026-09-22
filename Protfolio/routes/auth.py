@@ -30,7 +30,7 @@ def register():
                 "options": {
                     "data": {
                         "username": username
-                    }, "email_redirect_to": "https://8080-cs-13c5e34f-d659-4887-9d16-759d274b41ad.cs-asia-east1-vger.cloudshell.dev/dashboard"
+                    }, "email_redirect_to": "https://ahsansultan.pythonanywhere.com//dashboard"
                 }
             })
             

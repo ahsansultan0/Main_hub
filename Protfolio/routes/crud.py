@@ -6,13 +6,12 @@ crud=Blueprint('crud',__name__)
 
 def get_posts():
     print(session)
-    connection = engine.connect()
-
-    result = connection.execute(
-        db.select(posts)
-    ).fetchall()
-
-    connection.close()
+    
+    with engine.connect() as connection:
+        result = connection.execute(
+        text("SELECT * FROM posts")
+    )
+    posts = result.fetchall()
 
     return result
         

@@ -1,33 +1,61 @@
+from pathlib import Path
 import sqlalchemy as db
-from sqlalchemy import text
-
-engine=db.create_engine('sqlite:///database/posts.db')
-
-print('Engine created')
 
 
-meta_obj=db.MetaData()
+# Project directory
+BASE_DIR = Path(__file__).resolve().parent.parent
 
-posts=db.Table(
+# Database directory
+DB_DIR = BASE_DIR / "database"
 
-    'posts',
-    meta_obj,
-    db.Column('id', db.Integer, primary_key=True),
-    db.Column("title",db.String,nullable=False),
-    db.Column('content',db.String,nullable=False),
-    db.Column("user_id", db.String(255), nullable=False)
+# Make sure database directory exists
+DB_DIR.mkdir(exist_ok=True)
 
+# Database file
+DB_PATH = DB_DIR / "posts.db"
 
+# SQLAlchemy engine
+engine = db.create_engine(
+    f"sqlite:///{DB_PATH}"
 )
 
-from sqlalchemy import text
+print("Engine created:", DB_PATH)
 
-#with engine.begin() as connection:
- #   connection.execute(
-  #      text("ALTER TABLE posts ADD COLUMN user_id TEX")
-   # )
-connection =engine.connect()
+
+# Metadata
+meta_obj = db.MetaData()
+
+
+# Posts table
+posts = db.Table(
+    "posts",
+    meta_obj,
+
+    db.Column(
+        "id",
+        db.Integer,
+        primary_key=True
+    ),
+
+    db.Column(
+        "title",
+        db.String,
+        nullable=False
+    ),
+
+    db.Column(
+        "content",
+        db.String,
+        nullable=False
+    ),
+
+    db.Column(
+        "user_id",
+        db.String(255),
+        nullable=False
+    )
+)
+
+
+# Create table if it doesn't exist
 meta_obj.create_all(engine)
-
-
-
